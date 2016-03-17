@@ -1,0 +1,190 @@
+#!/usr/bin/env ruby
+
+class Customer
+
+  FIRST_NAMES =  ["James",
+                  "Mary",
+                  "John",
+                  "Patricia",
+                  "Robert",
+                  "Jennifer",
+                  "Michael",
+                  "Elizabeth",
+                  "William",
+                  "Linda",
+                  "David",
+                  "Barbara",
+                  "Richard",
+                  "Susan",
+                  "Joseph",
+                  "Margaret",
+                  "Charles",
+                  "Jessica",
+                  "Thomas",
+                  "Sarah",
+                  "Christopher",
+                  "Dorothy",
+                  "Daniel",
+                  "Karen",
+                  "Matthew",
+                  "Nancy",
+                  "Donald",
+                  "Betty",
+                  "Anthony",
+                  "Lisa",
+                  "Mark",
+                  "Sandra",
+                  "Paul",
+                  "Ashley",
+                  "Steven",
+                  "Kimberly",
+                  "George",
+                  "Donna",
+                  "Kenneth",
+                  "Helen",
+                  "Andrew",
+                  "Carol",
+                  "Edward",
+                  "Michelle",
+                  "Joshua",
+                  "Emily",
+                  "Brian",
+                  "Amanda",
+                  "Kevin",
+                  "Melissa",
+                  "Ronald",
+                  "Deborah",
+                  "Timothy",
+                  "Laura",
+                  "Jason",
+                  "Stephanie",
+                  "Jeffrey",
+                  "Rebecca",
+                  "Ryan",
+                  "Sharon",
+                  "Gary",
+                  "Cynthia",
+                  "Nicholas",
+                  "Kathleen",
+                  "Eric",
+                  "Anna",
+                  "Jacob",
+                  "Shirley",
+                  "Stephen",
+                  "Ruth",
+                  "Jonathan",
+                  "Amy",
+                  "Larry",
+                  "Angela",
+                  "Frank",
+                  "Brenda",
+                  "Scott",
+                  "Virginia",
+                  "Justin",
+                  "Pamela",
+                  "Brandon",
+                  "Catherine",
+                  "Raymond",
+                  "Katherine",
+                  "Gregory",
+                  "Nicole",
+                  "Samuel",
+                  "Christine",
+                  "Benjamin",
+                  "Samantha",
+                  "Patrick",
+                  "Janet",
+                  "Jack",
+                  "Debra",
+                  "Dennis",
+                  "Carolyn",
+                  "Alexander",
+                  "Rachel",
+                  "Jerry",
+                  "Heather"]
+
+  LAST_NAMES = ["Smith",
+                "Johnson",
+                "Williams",
+                "Jones",
+                "Brown",
+                "Davis",
+                "Miller",
+                "Wilson",
+                "Moore",
+                "Taylor",
+                "Anderson",
+                "Thomas",
+                "Jackson",
+                "White",
+                "Harris",
+                "Martin",
+                "Thompson",
+                "Garcia",
+                "Martinez",
+                "Robinson",
+                "Clark",
+                "Rodriguez",
+                "Lewis",
+                "Lee",
+                "Walker",
+                "Hall",
+                "Allen",
+                "Young",
+                "Hernandez",
+                "King",
+                "Wright",
+                "Lopez",
+                "Hill",
+                "Scott",
+                "Green",
+                "Adams",
+                "Baker",
+                "Gonzalez",
+                "Nelson",
+                "Carter",
+                "Mitchell",
+                "Perez",
+                "Roberts",
+                "Turner",
+                "Phillips",
+                "Campbell",
+                "Parker",
+                "Evans",
+                "Edwards",
+                "Collins"]
+
+  def self.CSVHeaders
+    "first,last,dob,balance"
+  end
+
+  def self.random_first_name
+    FIRST_NAMES.sample
+  end
+
+  def self.random_last_name
+    LAST_NAMES.sample
+  end
+
+  def self.random_dob
+    month = (1..12).to_a.sample
+    day = (1..28).to_a.sample
+    year = (1950..2000).to_a.sample
+    sprintf "%d-%02d-%02d",year,month,day
+  end
+
+  def self.random_balance
+    "#{(0..100000).to_a.sample}.#{(0..99).to_a.sample}"
+  end
+
+  def initialize(first=nil,last=nil,dob=nil,balance=nil)
+    @first = first || Customer.random_first_name
+    @last = last || Customer.random_last_name
+    @dob = dob || Customer.random_dob
+    @balance = balance || Customer.random_balance
+  end
+
+  def to_csv
+    "#{@first},#{@last},#{@dob},#{@balance}"
+  end
+end
